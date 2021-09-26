@@ -1,0 +1,14 @@
+public class DictionaryCommandline {
+    public static void showAllWords() {
+        System.out.println("No\t| English\t\t| Vietnamese");
+        for (int i = 1; i < Dictionary.length; i++) {
+            System.out.print(i + "\t");
+            System.out.println("| " + Dictionary[i - 1].word_target() + "\t\t" + "| " + Dictionary[i - 1].word_explain());
+        }
+    }
+
+    public static void dictionaryBasic() {
+        insertFromCommandline();
+        showAllWords();
+    }
+}
