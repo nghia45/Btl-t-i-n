@@ -36,7 +36,7 @@ public class DictionaryManagement {
      */
     public static void insertFromFile() {
         try {
-            FileReader file_reader = new FileReader("D:\\Code\\Java\\Btl-t-i-n\\src\\Dictionary\\dictionary.txt");
+            FileReader file_reader = new FileReader("src/Dictionary/dictionary.txt");
             BufferedReader buffered_reader = new BufferedReader(file_reader);
             String line = "";
             while (true) {
@@ -63,7 +63,7 @@ public class DictionaryManagement {
      */
     public static void dictionaryExportToFile() {
         try {
-            FileWriter file_writer = new FileWriter("D:\\Code\\Java\\Btl-t-i-n\\src\\Dictionary\\dictionary.txt");
+            FileWriter file_writer = new FileWriter("src/Dictionary/dictionary.txt");
             for (Word word : Dictionary.list) {
                 file_writer.write(word.to_string() + System.lineSeparator());
             }
