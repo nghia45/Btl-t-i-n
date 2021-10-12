@@ -1,4 +1,0 @@
-House   Nhà 
-Computer   Máy tính 
-Heart   Trái tim 
-Man   Người đàn ông 
