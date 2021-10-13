@@ -9,6 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 import static com.example.telstar_dictionary.DictionaryManagement.*;
@@ -27,7 +28,7 @@ public class deleteWordController {
     public void deleteWord() {
         boolean exist = false;
         for (int i = 0; i < Dictionary.list.size(); i++) {
-            if (targetTextField.getText().equals(Dictionary.list.get(i).getWord_target())) {
+            if (targetTextField.getText().toLowerCase(Locale.ROOT).equals(Dictionary.list.get(i).getWord_target())) {
                 Dictionary.list.remove(i);
                 dictionaryExportToFile();
                 alertLabel.setText("Xóa thành công");

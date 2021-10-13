@@ -66,4 +66,47 @@ public class DictionaryManagement {
         }
     }
 
+    /**
+     * insert to the dictionary from the file.
+     */
+    public static void insertHistoryFromFile() {
+        try {
+            FileReader file_reader =
+                    new FileReader("src/main/java/com/example/telstar_dictionary/history.txt");
+            BufferedReader buffered_reader = new BufferedReader(file_reader);
+            String line = "";
+            while (true) {
+                line = buffered_reader.readLine();
+                if (line == null) {
+                    break;
+                }
+                String[] txt = line.split("\\s+");
+                Word word = new Word();
+                word.setWord_target(txt[0]);
+                String explain = "";
+                for (int i = 1; i < txt.length; i++) {
+                    explain += txt[i] + " ";
+                }
+                word.setWord_explain(explain);
+                Dictionary.his.add(word);
+            }
+        } catch (Exception e) {
+        }
+    }
+
+    /**
+     * Tranfers the words in history list to the file.
+     */
+    public static void historyExportToFile() {
+        try {
+            FileWriter file_writer =
+                    new FileWriter("src/main/java/com/example/telstar_dictionary/history.txt");
+            for (Word word : Dictionary.his) {
+                file_writer.write(word.to_string() + System.lineSeparator());
+            }
+            file_writer.close();
+        } catch (Exception e) {
+        }
+    }
+
 }

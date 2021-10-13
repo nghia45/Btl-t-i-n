@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 
 import static com.example.telstar_dictionary.DictionaryManagement.*;
 
+import java.util.Locale;
 import java.util.ResourceBundle;
 import java.net.URL;
 import java.util.Stack;
@@ -34,17 +35,19 @@ public class addWordController {
         Word newWord = new Word();
         if (!engTextField.getText().isBlank() && !vieTextField.getText().isBlank()) {
             for (int i = 0; i < Dictionary.list.size(); i++) {
-                if (engTextField.getText().equals(Dictionary.list.get(i).getWord_target())) {
+                if (engTextField.getText().toLowerCase(Locale.ROOT).equals(Dictionary.list.get(i).getWord_target())) {
+                    alertLabel.setText("Thêm từ đã có");
                     exist = true;
                     break;
                 }
             }
-
-            newWord.setWord_target(engTextField.getText());
-            newWord.setWord_explain(vieTextField.getText());
-            alertLabel.setText("Thêm từ đã có");
-            Dictionary.list.add(newWord);
-            dictionaryExportToFile();
+            if(!exist) {
+                newWord.setWord_target(engTextField.getText());
+                newWord.setWord_explain(vieTextField.getText());
+                alertLabel.setText("Thêm từ thành công");
+                Dictionary.list.add(newWord);
+                dictionaryExportToFile();
+            }
         }
 
     }

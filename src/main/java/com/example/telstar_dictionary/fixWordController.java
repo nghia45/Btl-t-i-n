@@ -10,6 +10,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.controlsfx.validation.decoration.AbstractValidationDecoration;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 import static com.example.telstar_dictionary.DictionaryManagement.*;
@@ -31,7 +32,7 @@ public class fixWordController {
     public void fixWord(ActionEvent event) {
         boolean exist = false;
         for (int i = 0; i < Dictionary.list.size(); i++) {
-            if (engTextField.getText().equals(Dictionary.list.get(i).getWord_target())) {
+            if (engTextField.getText().toLowerCase(Locale.ROOT).equals(Dictionary.list.get(i).getWord_target())) {
                 Dictionary.list.get(i).setWord_explain(vieTextField.getText());
                 dictionaryExportToFile();
                 alertLabel.setText("Sửa thành công");
