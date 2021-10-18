@@ -6,7 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
+import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
 import static com.example.telstar_dictionary.DictionaryManagement.*;
@@ -22,7 +22,7 @@ public class addWordController {
     private TextField engTextField;
 
     @FXML
-    private TextField vieTextField;
+    private TextArea vieTextArea;
 
     @FXML
     private Button cancelBtn;
@@ -33,23 +33,18 @@ public class addWordController {
     public void addWord(ActionEvent event) {
         boolean exist = false;
         Word newWord = new Word();
-        if (!engTextField.getText().isBlank() && !vieTextField.getText().isBlank()) {
-            for (int i = 0; i < Dictionary.list.size(); i++) {
-                if (engTextField.getText().toLowerCase(Locale.ROOT).equals(Dictionary.list.get(i).getWord_target())) {
-                    alertLabel.setText("Thêm từ đã có");
-                    exist = true;
-                    break;
-                }
-            }
-            if(!exist) {
+        if (!engTextField.getText().isBlank() && !vieTextArea.getText().isBlank()) {
+            if (Dictionary.trie.search(engTextField.getText().toLowerCase(Locale.ROOT))) {
+                alertLabel.setText("Thêm từ đã có");
+            } else {
                 newWord.setWord_target(engTextField.getText());
-                newWord.setWord_explain(vieTextField.getText());
+                newWord.setWord_explain(vieTextArea.getText());
                 alertLabel.setText("Thêm từ thành công");
                 Dictionary.list.add(newWord);
+                Dictionary.trie.insert(newWord.getWord_target(), newWord.getWord_explain());
                 dictionaryExportToFile();
             }
         }
-
     }
 
     public void cancel(ActionEvent event) {

@@ -24,6 +24,7 @@ public class Word {
 
     /**
      * Get the word.
+     *
      * @return the word.
      */
     public String getWord_target() {
@@ -32,6 +33,7 @@ public class Word {
 
     /**
      * Set or change the word.
+     *
      * @param word_target new word to be set.
      */
     public void setWord_target(String word_target) {
@@ -40,6 +42,7 @@ public class Word {
 
     /**
      * get translated.
+     *
      * @return meaning of word.
      */
     public String getWord_explain() {
@@ -48,6 +51,7 @@ public class Word {
 
     /**
      * Set or change the meaning.
+     *
      * @param word_explain meaning to be set.
      */
     public void setWord_explain(String word_explain) {
@@ -56,9 +60,10 @@ public class Word {
 
     /**
      * Turn the word object into string.
+     *
      * @return string type of the word.
      */
     public String to_string() {
-        return getWord_target() + "   " + getWord_explain();
+        return getWord_target() + "\n" + getWord_explain();
     }
 }

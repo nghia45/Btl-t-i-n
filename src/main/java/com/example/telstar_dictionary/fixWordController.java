@@ -34,6 +34,8 @@ public class fixWordController {
         for (int i = 0; i < Dictionary.list.size(); i++) {
             if (engTextField.getText().toLowerCase(Locale.ROOT).equals(Dictionary.list.get(i).getWord_target())) {
                 Dictionary.list.get(i).setWord_explain(vieTextField.getText());
+                Dictionary.trie.insert(engTextField.getText().toLowerCase(Locale.ROOT)
+                        , vieTextField.getText().toLowerCase(Locale.ROOT));
                 dictionaryExportToFile();
                 alertLabel.setText("Sửa thành công");
                 exist = true;

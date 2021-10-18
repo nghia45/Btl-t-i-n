@@ -30,6 +30,7 @@ public class deleteWordController {
         for (int i = 0; i < Dictionary.list.size(); i++) {
             if (targetTextField.getText().toLowerCase(Locale.ROOT).equals(Dictionary.list.get(i).getWord_target())) {
                 Dictionary.list.remove(i);
+                Dictionary.trie.delete(targetTextField.getText().toLowerCase(Locale.ROOT));
                 dictionaryExportToFile();
                 alertLabel.setText("Xóa thành công");
                 exist = true;

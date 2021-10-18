@@ -39,14 +39,6 @@ public class DictionaryController implements Initializable
     @FXML
     private Label hisLabelL4;
     @FXML
-    private Label hisLabelR1;
-    @FXML
-    private Label hisLabelR2;
-    @FXML
-    private Label hisLabelR3;
-    @FXML
-    private Label hisLabelR4;
-    @FXML
     public TextField searchTextField;
     @FXML
     public ImageView engFlagImageView;
@@ -79,20 +71,18 @@ public class DictionaryController implements Initializable
 
     public void showWord(ActionEvent event) {
         boolean exist = false;
-        for (int i = 1; i <= Dictionary.list.size(); i++) {
-            if (Dictionary.list.get(i - 1).getWord_target().equals
-                    (searchTextField.getText().toLowerCase(Locale.ROOT))) {
-                englishLabel.setText(Dictionary.list.get(i - 1).getWord_target());
-                explainLabel.setText(Dictionary.list.get(i - 1).getWord_explain());
-                Dictionary.his.add(Dictionary.list.get(i-1));
-                historyExportToFile();
-                exist = true;
-            }
-        }
         showHistory();
-        if (!exist) {
+        if (!Dictionary.trie.search(searchTextField.getText().toLowerCase(Locale.ROOT))) {
             englishLabel.setText("Từ [" + searchTextField.getText() + "] không tồn tại !");
             explainLabel.setText("");
+        } else {
+            englishLabel.setText(searchTextField.getText().toLowerCase(Locale.ROOT));
+            explainLabel.setText(Dictionary.trie.search2(searchTextField.getText().toLowerCase(Locale.ROOT)));
+            Word newWord = new Word();
+            newWord.setWord_target(searchTextField.getText().toLowerCase(Locale.ROOT));
+            newWord.setWord_explain(Dictionary.trie.search2(searchTextField.getText().toLowerCase(Locale.ROOT)));
+            Dictionary.his.add(newWord);
+            historyExportToFile();
         }
     }
 
@@ -143,10 +133,6 @@ public class DictionaryController implements Initializable
        hisLabelL2.setText(Dictionary.his.get(Dictionary.his.size()-3).getWord_target());
        hisLabelL3.setText(Dictionary.his.get(Dictionary.his.size()-2).getWord_target());
        hisLabelL4.setText(Dictionary.his.get(Dictionary.his.size()-1).getWord_target());
-       hisLabelR1.setText(Dictionary.his.get(Dictionary.his.size()-4).getWord_explain());
-       hisLabelR2.setText(Dictionary.his.get(Dictionary.his.size()-3).getWord_explain());
-       hisLabelR3.setText(Dictionary.his.get(Dictionary.his.size()-2).getWord_explain());
-       hisLabelR4.setText(Dictionary.his.get(Dictionary.his.size()-1).getWord_explain());
     }
 
     public void speak(ActionEvent event) {

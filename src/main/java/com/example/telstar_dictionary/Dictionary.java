@@ -8,4 +8,6 @@ public class Dictionary {
 
     //Contain searching history
     public static ArrayList<Word> his = new ArrayList<>();
+
+    public static Trie trie = new Trie();
 }
