@@ -129,10 +129,10 @@ public class DictionaryController implements Initializable
     }
 
     public void showHistory() {
-       hisLabelL1.setText(Dictionary.his.get(Dictionary.his.size()-4).getWord_target());
-       hisLabelL2.setText(Dictionary.his.get(Dictionary.his.size()-3).getWord_target());
-       hisLabelL3.setText(Dictionary.his.get(Dictionary.his.size()-2).getWord_target());
-       hisLabelL4.setText(Dictionary.his.get(Dictionary.his.size()-1).getWord_target());
+        hisLabelL1.setText(Dictionary.his.get(Dictionary.his.size()-4).getWord_target());
+        hisLabelL2.setText(Dictionary.his.get(Dictionary.his.size()-3).getWord_target());
+        hisLabelL3.setText(Dictionary.his.get(Dictionary.his.size()-2).getWord_target());
+        hisLabelL4.setText(Dictionary.his.get(Dictionary.his.size()-1).getWord_target());
     }
 
     public void speak(ActionEvent event) {
