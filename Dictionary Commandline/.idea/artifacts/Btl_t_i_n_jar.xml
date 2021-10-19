@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Btl-t-i-n:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Btl_t_i_n_jar</output-path>
+    <root id="archive" name="Btl-t-i-n.jar">
+      <element id="module-output" name="Btl-t-i-n" />
+    </root>
+  </artifact>
+</component>
