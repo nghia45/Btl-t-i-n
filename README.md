@@ -8,6 +8,7 @@
 - Tìm kiếm từ
 - Hiển thị tất cả từ điển
 - Thêm, sửa, xoá từ điển
+- SDK 8
 ## GUI version:
 ### Các chức năng chính:
 - Tìm kiếm
@@ -16,3 +17,4 @@
 - Lịch sử tra cứu
 - Giao diện đồ hoạ đẹp mắt, thân thiện
 - Sử dụng cấu trúc dữ liệu Trie tăng tốc độ tra cứu
+- SDK 17
